@@ -3,4 +3,3 @@ export default () => {
     document.body.classList.add(`is-loading`);
   });
 };
-
