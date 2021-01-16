@@ -5,6 +5,12 @@
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(.49,.85,1,1);
+
+  .is-loading & {
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -35,6 +41,14 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s cubic-bezier(.49,.85,1,1), transform 0.5s cubic-bezier(.49,.85,1,1);
+
+  .is-loading & {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -272,6 +286,7 @@
         width: 100%;
         left: 0;
         right: auto;
+        transition-delay: 0.5s;
       }
     }
 
