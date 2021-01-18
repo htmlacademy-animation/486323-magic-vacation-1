@@ -6,6 +6,7 @@ export default class FullPageScroll {
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.backgroundScreenElement = document.querySelector(`.page-fill`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
@@ -35,6 +36,7 @@ export default class FullPageScroll {
 
   changePageDisplay() {
     this.changeVisibilityDisplay();
+    this.toggleBackgroundElement();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
   }
@@ -48,6 +50,19 @@ export default class FullPageScroll {
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
     }, 500);
+  }
+
+  toggleBackgroundElement() {
+    if (this.screenElements[this.activeScreen].classList.contains(`screen--prizes`)) {
+      this.backgroundScreenElement.classList.add(`is-show`);
+      setTimeout(() => {
+        this.changeVisibilityDisplay();
+        this.backgroundScreenElement.classList.remove(`is-show`);
+      }, 700);
+    } else {
+      this.backgroundScreenElement.classList.remove(`is-show`);
+      this.changeVisibilityDisplay();
+    }
   }
 
   changeActiveMenuItem() {
