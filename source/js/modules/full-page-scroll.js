@@ -3,11 +3,14 @@ import throttle from 'lodash/throttle';
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 2000;
+    this.FILL_TIMEOUT = 500;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.backgroundScreenElement = document.querySelector(`.page-fill`);
 
     this.activeScreen = 0;
+    this.prevScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
   }
@@ -21,6 +24,7 @@ export default class FullPageScroll {
 
   onScroll(evt) {
     const currentPosition = this.activeScreen;
+    this.prevScreen = this.activeScreen;
     this.reCalculateActiveScreenPosition(evt.deltaY);
     if (currentPosition !== this.activeScreen) {
       this.changePageDisplay();
@@ -29,12 +33,13 @@ export default class FullPageScroll {
 
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
+    this.prevScreen = this.activeScreen;
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
     this.changePageDisplay();
   }
 
   changePageDisplay() {
-    this.changeVisibilityDisplay();
+    this.toggleBackgroundElement();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
   }
@@ -48,6 +53,24 @@ export default class FullPageScroll {
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
     }, 500);
+  }
+
+  toggleBackgroundElement() {
+    if (this.screenElements[this.activeScreen].classList.contains(`screen--prizes`) &&
+      this.screenElements[this.prevScreen].classList.contains(`screen--story`)) {
+      this.backgroundScreenElement.classList.add(`is-show`);
+      this.screenElements[this.prevScreen].classList.remove(`screen--hidden`);
+      this.screenElements[this.activeScreen].classList.add(`screen--hidden`);
+      setTimeout(() => {
+        this.changeVisibilityDisplay();
+        this.backgroundScreenElement.classList.remove(`is-show`);
+        this.screenElements[this.prevScreen].classList.add(`screen--hidden`);
+        this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+      }, this.FILL_TIMEOUT);
+    } else {
+      this.backgroundScreenElement.classList.remove(`is-show`);
+      this.changeVisibilityDisplay();
+    }
   }
 
   changeActiveMenuItem() {
