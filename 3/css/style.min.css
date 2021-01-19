@@ -3365,7 +3365,7 @@ img {
   transform: translateY(100%); }
   .page-fill.is-show {
     transform: translateY(0);
-    transition: transform 1s; }
+    transition: transform 0.5s; }
 
 
 /*# sourceMappingURL=style.min.css.map*/
