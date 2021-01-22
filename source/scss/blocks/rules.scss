@@ -162,18 +162,6 @@
     color: $c-transparent;
     transform: scale(0);
     animation: circleScale 0.5s ease forwards;
-  }
-
-  @for $i from 1 through 4 {
-    &:nth-child(#{$i}) {
-      &::before {
-        animation-delay: 0.2s * $i;
-      }
-
-      & p {
-        animation-delay: 0.2s * $i;
-      }
-    }
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -189,6 +177,18 @@
       height: 2.5rem;
       line-height: 3rem;
       font-size: 1.4rem;
+    }
+  }
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      &::before {
+        animation-delay: 0.2s * $i;
+      }
+
+      & p {
+        animation-delay: 0.2s * $i;
+      }
     }
   }
 
@@ -211,8 +211,7 @@
   width: 0;
   color: $c-transparent;
   opacity: 0;
-  transition: color 0.3s, width 0.3s;
-  animation: showButton 0.3s 1s forwards;
+  animation: showButton 0.7s 1s forwards;
 
   @media (min-width: $stop-scaling) {
     bottom: 60px;
@@ -220,9 +219,10 @@
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
-    left: 0;
+    left: auto;
     right: 0;
     bottom: 4rem;
+    animation: showButtonMobile 0.7s 1s forwards;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
@@ -273,12 +273,35 @@
     opacity: 1;
   }
   70% {
-    width: auto;
+    width: 18rem;
     opacity: 1;
     color: $c-transparent;
   }
   100% {
-    width: auto;
+    width: 18rem;
+    opacity: 1;
+    color: $c-dark;
+  }
+}
+
+@keyframes showButtonMobile {
+  0% {
+    width: 0;
+    color: $c-transparent;
+    opacity: 0;
+  }
+  10% {
+    width: 6rem;
+    color: $c-transparent;
+    opacity: 1;
+  }
+  70% {
+    width: 100%;
+    opacity: 1;
+    color: $c-transparent;
+  }
+  100% {
+    width: 100%;
     opacity: 1;
     color: $c-dark;
   }
