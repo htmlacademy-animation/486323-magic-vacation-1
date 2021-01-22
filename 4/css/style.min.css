@@ -2551,78 +2551,36 @@ img {
     color: rgba(0, 0, 0, 0);
     transform: scale(0);
     animation: circleScale 0.5s ease forwards; }
+    @media (max-width: 1024px) and (orientation: portrait) {
+      .rules__item::before {
+        top: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 3rem;
+        font-size: 1.4rem; } }
+    @media (max-width: 768px) and (orientation: landscape) {
+      .rules__item::before {
+        top: 0.6rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 3rem;
+        font-size: 1.4rem; } }
   .rules__item:nth-child(1)::before {
     animation-delay: 0.2s; }
   .rules__item:nth-child(1) p {
     animation-delay: 0.2s; }
-  @media (max-width: 1024px) and (orientation: portrait) {
-    .rules__item {
-      top: 1rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
-  @media (max-width: 768px) and (orientation: landscape) {
-    .rules__item {
-      top: 0.6rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
   .rules__item:nth-child(2)::before {
     animation-delay: 0.4s; }
   .rules__item:nth-child(2) p {
     animation-delay: 0.4s; }
-  @media (max-width: 1024px) and (orientation: portrait) {
-    .rules__item {
-      top: 1rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
-  @media (max-width: 768px) and (orientation: landscape) {
-    .rules__item {
-      top: 0.6rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
   .rules__item:nth-child(3)::before {
     animation-delay: 0.6s; }
   .rules__item:nth-child(3) p {
     animation-delay: 0.6s; }
-  @media (max-width: 1024px) and (orientation: portrait) {
-    .rules__item {
-      top: 1rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
-  @media (max-width: 768px) and (orientation: landscape) {
-    .rules__item {
-      top: 0.6rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
   .rules__item:nth-child(4)::before {
     animation-delay: 0.8s; }
   .rules__item:nth-child(4) p {
     animation-delay: 0.8s; }
-  @media (max-width: 1024px) and (orientation: portrait) {
-    .rules__item {
-      top: 1rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
-  @media (max-width: 768px) and (orientation: landscape) {
-    .rules__item {
-      top: 0.6rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      line-height: 3rem;
-      font-size: 1.4rem; } }
   .rules__item p {
     margin: 0;
     opacity: 0;
@@ -2639,17 +2597,17 @@ img {
   width: 0;
   color: rgba(0, 0, 0, 0);
   opacity: 0;
-  transition: color 0.3s, width 0.3s;
-  animation: showButton 0.3s 1s forwards; }
+  animation: showButton 0.7s 1s forwards; }
   @media (min-width: 2000px) {
     .rules__link {
       bottom: 60px;
       right: 56px; } }
   @media (max-width: 1024px) and (orientation: portrait) {
     .rules__link {
-      left: 0;
+      left: auto;
       right: 0;
-      bottom: 4rem; } }
+      bottom: 4rem;
+      animation: showButtonMobile 0.7s 1s forwards; } }
   @media (max-width: 1024px) and (orientation: landscape) {
     .rules__link {
       bottom: 5rem; } }
@@ -2687,11 +2645,29 @@ img {
     color: rgba(0, 0, 0, 0);
     opacity: 1; }
   70% {
-    width: auto;
+    width: 18rem;
     opacity: 1;
     color: rgba(0, 0, 0, 0); }
   100% {
-    width: auto;
+    width: 18rem;
+    opacity: 1;
+    color: #5f458c; } }
+
+@keyframes showButtonMobile {
+  0% {
+    width: 0;
+    color: rgba(0, 0, 0, 0);
+    opacity: 0; }
+  10% {
+    width: 6rem;
+    color: rgba(0, 0, 0, 0);
+    opacity: 1; }
+  70% {
+    width: 100%;
+    opacity: 1;
+    color: rgba(0, 0, 0, 0); }
+  100% {
+    width: 100%;
     opacity: 1;
     color: #5f458c; } }
 
