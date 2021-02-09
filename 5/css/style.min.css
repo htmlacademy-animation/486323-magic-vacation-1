@@ -2270,7 +2270,7 @@ img {
     bottom: 10rem;
     width: 250px;
     z-index: 5;
-    animation: flamingo 1s, flamingo-moving 2s linear 1s infinite alternate forwards; }
+    animation: flamingo 1s, flamingo-moving 1.5s linear 1s infinite alternate forwards; }
   .result__image-item--leaf-blue-1 {
     left: calc(50% + 30px);
     bottom: 18rem;
@@ -2496,7 +2496,7 @@ img {
   0% {
     transform: translate3d(0, 0, 0) rotate(0); }
   100% {
-    transform: translate3d(0, 5px, 0) rotate(-3deg); } }
+    transform: translate3d(0, -1rem, 0) rotate(-3deg); } }
 
 @keyframes left-rotate {
   0% {
