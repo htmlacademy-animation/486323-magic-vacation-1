@@ -50,6 +50,15 @@
     width: calc(100% - 21rem);
   }
 
+  #result2.screen & {
+    width: 0;
+    opacity: 0;
+  }
+
+  #result2.screen.screen--show & {
+    animation: width-input 0.5s linear 1.5s forwards;
+  }
+
   &:focus {
     border: 1px solid $c-purple;
   }
@@ -85,6 +94,15 @@
 }
 
 .form__button {
+
+  #result2.screen & {
+    color: $c-transparent;
+    opacity: 0;
+  }
+
+  #result2.screen.screen--show & {
+    animation: opacity-text $animation-time linear $animation-time forwards;
+  }
 
   @media (orientation: portrait) {
     position: relative;
@@ -149,5 +167,31 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: calc(100% - 5rem);
     }
+  }
+}
+
+@keyframes opacity-text {
+  0% {
+    opacity: 0;
+    color: $c-transparent;
+  }
+  30% {
+    opacity: 1;
+    color: $c-transparent;
+  }
+  100% {
+    opacity: 1;
+    color: $c-dark;
+  }
+}
+
+@keyframes width-input {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: calc(100% - 21rem);
+    opacity: 1;
   }
 }

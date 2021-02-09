@@ -1,0 +1,18 @@
+.animation-text__word {
+  display: inline-block;
+  margin: 0 5px;
+  overflow: hidden;
+  vertical-align: sub;
+}
+
+.animation-text__word > span {
+  transform: translate3d(0, 1em, 0);
+  display: inline-block;
+  opacity: 0;
+}
+
+.animation-text.active .animation-text__word > span {
+  opacity: 1;
+  padding-top: 12px;
+  transform: translate3d(0, 0, 0);
+}

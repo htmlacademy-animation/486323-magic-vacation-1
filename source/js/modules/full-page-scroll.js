@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import {AccentTypographyBuild, animationTitle, animationDate} from "./accent-typography-build";
 
 export default class FullPageScroll {
   constructor() {
@@ -42,6 +43,7 @@ export default class FullPageScroll {
     this.toggleBackgroundElement();
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
+    this.addMainTitleAnimation();
   }
 
   changeVisibilityDisplay() {
@@ -53,6 +55,7 @@ export default class FullPageScroll {
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
     }, 500);
+    this.addSectionTitleAnimation();
   }
 
   toggleBackgroundElement() {
@@ -70,6 +73,42 @@ export default class FullPageScroll {
     } else {
       this.backgroundScreenElement.classList.remove(`is-show`);
       this.changeVisibilityDisplay();
+    }
+  }
+
+  addMainTitleAnimation() {
+    if (this.activeScreen === 0) {
+      const title = document.querySelector(`.animation-text--title`);
+      setTimeout(() => {
+        animationTitle.runAnimation();
+      }, 500);
+
+      title.addEventListener(`transitionend`, () => {
+        animationDate.runAnimation();
+      });
+    } else {
+      animationTitle.destroyAnimation();
+      animationDate.destroyAnimation();
+    }
+  }
+
+  addSectionTitleAnimation() {
+    if (this.screenElements[this.activeScreen].id) {
+      const animationScreenTitle = new AccentTypographyBuild(
+          `.animation-text.animation-text--${this.screenElements[this.activeScreen].id}`,
+          200,
+          `active`,
+          `transform`);
+
+      let screenTitle = document.querySelector(
+          `.animation-text.animation-text--${this.screenElements[this.activeScreen].id}`);
+
+      if (screenTitle && screenTitle.classList.contains(`active`)) {
+        animationScreenTitle.destroyAnimation();
+      }
+      setTimeout(() => {
+        animationScreenTitle.runAnimation();
+      }, 500);
     }
   }
 

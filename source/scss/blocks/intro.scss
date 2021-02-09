@@ -25,12 +25,12 @@
 
 .intro__title {
   margin: 0;
-  max-width: 99rem;
+  max-width: 102rem;
   text-transform: uppercase;
   font-family: $font-alt;
   font-weight: 400;
   font-size: 12rem;
-  line-height: 0.906;
+  line-height: 1;
   letter-spacing: -0.04em;
 
   @media (min-width: $stop-scaling) {
