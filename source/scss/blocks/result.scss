@@ -63,7 +63,7 @@
     bottom: 10rem;
     width: 250px;
     z-index: 5;
-    animation: flamingo $animation-time, flamingo-moving 2s linear $animation-time infinite alternate forwards;
+    animation: flamingo $animation-time, flamingo-moving 1.5s linear $animation-time infinite alternate forwards;
   }
 
   &--leaf-blue-1 {
@@ -343,7 +343,7 @@
     transform: translate3d(0, 0, 0) rotate(0);
   }
   100% {
-    transform: translate3d(0, 5px, 0) rotate(-3deg);
+    transform: translate3d(0, -1rem, 0) rotate(-3deg);
   }
 }
 
