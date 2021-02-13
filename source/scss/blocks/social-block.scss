@@ -20,7 +20,7 @@
   display: block;
   width: 4rem;
   height: 4rem;
-  color: $c-dark;
+  color: var(--current-color);
   border-radius: 50%;
   transition: color 0.3s;
 
@@ -59,7 +59,7 @@
 
   &:hover,
   .social-block--active & {
-    color: $c-purple;
+    color: var(--accent-color);
 
     &::before {
       width: 112.5%;
@@ -208,19 +208,19 @@
   }
 
   &:hover {
-    color: $c-purple;
+    color: var(--accent-color);
   }
 
   &:focus {
-    color: $c-purple;
+    color: var(--accent-color);
     background-color: $c-light;
-    border-color: $c-purple;
+    border-color: var(--accent-color);
     outline: none;
   }
 
   &:active,
   &:active:focus {
-    color: $c-purple;
+    color: var(--accent-color);
     background-color: $c-light;
     border-color: $c-light;
   }

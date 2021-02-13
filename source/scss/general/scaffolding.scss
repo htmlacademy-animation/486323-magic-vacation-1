@@ -16,6 +16,24 @@
       font-size: 2vw;
     }
   }
+
+  #{--accent-color}: $c-purple;
+  #{--current-color}: $c-dark;
+
+  &[data-theme="dark"] {
+    #{--accent-color}: $c-dark;
+    #{--current-color}: $c-purple;
+  }
+
+  &[data-theme="blue"] {
+    #{--accent-color}: $c-grey;
+    #{--current-color}: $c-blue;
+  }
+
+  &[data-theme="grey"] {
+    #{--accent-color}: $c-blue;
+    #{--current-color}: $c-grey;
+  }
 }
 
 html {

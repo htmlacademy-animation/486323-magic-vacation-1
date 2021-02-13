@@ -44,6 +44,7 @@ export default class FullPageScroll {
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
     this.addMainTitleAnimation();
+    this.toggleFooterAnimation();
   }
 
   changeVisibilityDisplay() {
@@ -73,6 +74,17 @@ export default class FullPageScroll {
     } else {
       this.backgroundScreenElement.classList.remove(`is-show`);
       this.changeVisibilityDisplay();
+    }
+  }
+
+  toggleFooterAnimation() {
+    if (this.screenElements[this.activeScreen].classList.contains(`screen--prizes`) &&
+      this.screenElements[this.prevScreen].classList.contains(`screen--rules`) ||
+      this.screenElements[this.activeScreen].classList.contains(`screen--rules`) &&
+      this.screenElements[this.prevScreen].classList.contains(`screen--prizes`)) {
+      this.screenElements[this.activeScreen].classList.add(`screen--footer-opacity`);
+    } else {
+      this.screenElements[this.activeScreen].classList.remove(`screen--footer-opacity`);
     }
   }
 

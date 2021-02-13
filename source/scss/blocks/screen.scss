@@ -36,6 +36,30 @@
   left: 0;
   right: 0;
   z-index: 1;
+
+  .screen:not(.active) & {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  .screen.active & {
+    animation: transform-to-top 0.5s cubic-bezier(.49,.85,1,1) forwards;
+  }
+
+  .screen--footer-opacity:not(.active) & {
+    transform: translate3d(0, 0, 0);
+
+    & ul {
+      opacity: 0;
+    }
+  }
+
+  .screen--footer-opacity.active & {
+    animation: none;
+
+    & ul {
+      animation: opacity 1s forwards;;
+    }
+  }
 }
 
 .screen__footer {
@@ -46,21 +70,42 @@
   color: $c-dark;
   background-color: $c-light;
   z-index: 1;
-  transform: translateY(100%);
-  transition: transform 0.5s cubic-bezier(.49,.85,1,1);
 
-  .is-loading & {
-    transform: translateY(0);
+  .screen:not(.active) & {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  .screen.active & {
+    animation: transform-to-top 0.5s cubic-bezier(.49,.85,1,1) forwards;
+  }
+
+  .screen--footer-opacity:not(.active) & {
+    transform: translate3d(0, 0, 0);
+
+    & .screen__footer-note {
+      opacity: 0;
+    }
+  }
+
+  .screen--footer-opacity.active & {
+    animation: none;
+
+    & .screen__footer-note {
+      animation: opacity 1s forwards;;
+    }
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 0 3.6rem 0 0;
+    color: $c-transparent;
 
     &.screen__footer--full {
       width: 100%;
       height: 18rem;
+      color: $c-dark;
+      transition: color 0.5s 0.5s, width 0.5s linear, height 0.5s linear;
     }
   }
 
