@@ -53,12 +53,16 @@ export default () => {
           slideChange: () => {
             if (storySlider.activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
+              document.documentElement.setAttribute(`data-theme`, `dark`);
             } else if (storySlider.activeIndex === 2) {
               sliderContainer.style.backgroundImage = `url("img/slide2.jpg")`;
+              document.documentElement.setAttribute(`data-theme`, `blue`);
             } else if (storySlider.activeIndex === 4) {
               sliderContainer.style.backgroundImage = `url("img/slide3.jpg")`;
+              document.documentElement.setAttribute(`data-theme`, `grey`);
             } else if (storySlider.activeIndex === 6) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg")`;
+              document.documentElement.removeAttribute(`data-theme`);
             }
           },
           resize: () => {
@@ -70,6 +74,22 @@ export default () => {
       });
     }
   };
+
+  document.body.addEventListener(`screenChanged`, (evt) => {
+    if (storySlider && evt.detail.screenName === `story`) {
+      if (storySlider.activeIndex === 0) {
+        document.documentElement.setAttribute(`data-theme`, `dark`);
+      } else if (storySlider.activeIndex === 2) {
+        document.documentElement.setAttribute(`data-theme`, `blue`);
+      } else if (storySlider.activeIndex === 4) {
+        document.documentElement.setAttribute(`data-theme`, `grey`);
+      } else if (storySlider.activeIndex === 6) {
+        document.documentElement.removeAttribute(`data-theme`);
+      }
+    } else {
+      document.documentElement.removeAttribute(`data-theme`);
+    }
+  });
 
   window.addEventListener(`resize`, function () {
     if (storySlider) {
