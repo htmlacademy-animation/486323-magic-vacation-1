@@ -160,6 +160,8 @@
     height: 1rem;
     background-color: $c-light;
     border-radius: 50%;
+    opacity: 0;
+    animation: opacity 1s linear infinite;
 
     @media (min-width: $stop-scaling) {
       margin: 0 6.5px;
@@ -177,6 +179,13 @@
       height: 0.6rem;
     }
   }
+
+  @for $i from 1 through 3 {
+    span:nth-child(#{$i}) {
+      animation-delay: 0.2s * $i;
+    }
+  }
+
 
   &--hidden {
     opacity: 0;
